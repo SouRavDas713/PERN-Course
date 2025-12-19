@@ -5,9 +5,9 @@ import {
   createProduct,
   updateProduct,
   deleteProduct,
-} from "../controllers/productController.js";
-import { authMiddleware } from "../middleware/auth.js";
-import { adminMiddleware } from "../middleware/admin.js";
+} from "../../controllers/product/index.js";
+import { authMiddleware } from "../../middleware/auth.js";
+import { adminMiddleware } from "../../middleware/admin.js";
 
 const router = Router();
 
