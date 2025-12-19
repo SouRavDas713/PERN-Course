@@ -51,7 +51,6 @@ export const getAProduct = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-  console.log("I am here");
 
   const productCreateSchema = z.object({
     title: z.string().min(3),
@@ -116,7 +115,6 @@ export const createProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {
   const productId = req.params.id;
 
-  // Validate productId
   const paramSchema = z.object({
     id: z.uuid(),
   });
@@ -129,7 +127,6 @@ export const updateProduct = async (req, res) => {
     });
   }
 
-  // Body validation (partial update)
   const productUpdateSchema = z.object({
     title: z.string().min(3).optional(),
     slug: z.string().min(3).optional(),
@@ -153,7 +150,6 @@ export const updateProduct = async (req, res) => {
     });
   }
 
-  // Check if product exists
   const existingProduct = await prisma.product.findUnique({
     where: { id: productId },
   });
@@ -164,8 +160,7 @@ export const updateProduct = async (req, res) => {
       message: "Product not found",
     });
   }
-
-  // Validate categoryId if provided
+  
   if (bodyValidation.data.categoryId) {
     const category = await prisma.category.findUnique({
       where: { id: bodyValidation.data.categoryId },

@@ -98,10 +98,3 @@ export const createVariant = async (req, res) => {
   });
 };
 
-export const updateVariant = async (req, res) => {
-  res.json({ message: "This is assignment please do it yourself" });
-};
-
-export const deleteVariant = async (req, res) => {
-  res.json({ message: "This is assignment please do it yourself" });
-};
